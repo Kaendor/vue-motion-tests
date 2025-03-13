@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { animate } from 'motion';
-import { onMounted, ref, useTemplateRef } from 'vue';
+// import { animate } from 'motion';
+import { animate, Motion } from 'motion-v';
+import { ref } from 'vue';
 
 const display = ref("10");
-const percent = useTemplateRef("percent");
 
 animate(10, 100, {
   ease: "circOut",
@@ -13,26 +13,25 @@ animate(10, 100, {
   }
 });
 
-
-// onMounted mandatory to obtain the ref
-onMounted(() => {
-  animate(percent.value, {scale: 2}, {duration: 1});
-  console.log(percent.value);
-  percent.value.onmouseover = () => {
-    animate(percent.value, {scale: 2.5}, {duration: 0.2});
-  };
-  percent.value.onmouseout = () => {
-    animate(percent.value, {scale: 2}, {duration: 0.2});
-  };
-  return () => {
-    animate(percent.value, {scale: 1});
-  };
-});
-
 </script>
 
 <template>
-  <div class="box" ref="percent">{{display}}</div>
+  <Motion 
+    class="box" 
+    :transition="{
+      duration: 1,
+    }"
+    :hover="{
+      scale: 2.5,
+    }"
+    :initial="{
+      rotate: 180,
+      scale: 1,
+    }" 
+    :animate="{
+      rotate: 0,
+      scale: 2,
+    }">{{display}}</Motion>
 </template>
 
  <style>
