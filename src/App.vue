@@ -39,5 +39,6 @@ animate(10, 100, {
         text-align: center;
         vertical-align: middle;
         display: table-cell;
+        cursor: pointer;
     }
 </style>
