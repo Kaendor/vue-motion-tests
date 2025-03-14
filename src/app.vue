@@ -17,6 +17,7 @@ animate(10, 100, {
 })
 
 function handlePress() {
+  // @ts-ignore
   const pos = useElementBounding(button)
   const x = (pos.left.value + pos.width.value / 2) / width.value
   const y = (pos.top.value + pos.height.value / 2) / height.value
@@ -37,11 +38,13 @@ function handlePress() {
     <Motion
       ref="button"
       class="box"
-      :initial="{ scale: 0 }"
-      :animate="{ rotate: 180, scale: 1 }"
+      as="button"
+      :initial="{ scale: 0, rotate: 180 }"
+      :animate="{ rotate: 0, scale: 1 }"
       :exit="{ rotate: 0, scale: 0 }"
       :while-press="{ scale: 0.8 }"
-      :while-hover="{ scale: 1.2 }"
+      :while-hover="{ scale: 1.2, rotate: [0, 5, -5, 0] }"
+      :release="{ rotate: 180 }"
       @press-start="handlePress"
     />
   </AnimatePresence>
@@ -49,6 +52,7 @@ function handlePress() {
 
  <style>
     .box {
+        border: none;
         width: 100px;
         height: 100px;
         background-color: #FA5D89;
@@ -57,6 +61,6 @@ function handlePress() {
         vertical-align: middle;
         display: table-cell;
         cursor: pointer;
-      z-index: 200;
+        z-index: 200;
     }
 </style>
