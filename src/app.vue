@@ -44,7 +44,6 @@ function handlePress() {
       :exit="{ rotate: 0, scale: 0 }"
       :while-press="{ scale: 0.8 }"
       :while-hover="{ scale: 1.2, rotate: [0, 5, -5, 0] }"
-      :release="{ rotate: 180 }"
       @press-start="handlePress"
     />
   </AnimatePresence>
