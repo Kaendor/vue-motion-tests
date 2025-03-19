@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ark-ui/vue": "^5.1.1",
     "@vueuse/core": "^13.0.0",
     "canvas-confetti": "^1.9.3",
     "motion": "^12.4.13",
