@@ -1,20 +1,11 @@
 <script setup lang="ts">
 import confetti from 'canvas-confetti'
-import { animate, Motion, AnimatePresence } from 'motion-v'
+import { Motion, AnimatePresence } from 'motion-v'
 import { useElementBounding, useWindowSize } from '@vueuse/core'
-import { ref, useTemplateRef } from 'vue'
+import { useTemplateRef } from 'vue'
 
-const display = ref('10')
 const button = useTemplateRef('button')
 const { width, height } = useWindowSize()
-
-animate(10, 100, {
-  ease: 'circOut',
-  duration: 1,
-  onUpdate: (latest) => {
-    display.value = new Intl.NumberFormat().format(latest)
-  },
-})
 
 function handlePress() {
   // @ts-ignore
