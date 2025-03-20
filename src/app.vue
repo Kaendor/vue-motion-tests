@@ -4,6 +4,7 @@ import { Motion, AnimatePresence } from 'motion-v'
 import { useElementBounding, useWindowSize } from '@vueuse/core'
 import { ref, useTemplateRef } from 'vue'
 import ProgressBar from './components/progress-linear.vue'
+import Calculator from './components/calculator-idle.vue'
 
 const button = useTemplateRef('button')
 const { width, height } = useWindowSize()
@@ -34,6 +35,7 @@ const progressValue = ref(0)
 </script>
 
 <template>
+  <Calculator />
   <ProgressBar :value="progressValue" />
   <AnimatePresence>
     <Motion
